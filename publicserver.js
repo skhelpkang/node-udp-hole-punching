@@ -5,7 +5,7 @@ var dgram = require('dgram');
 
 
 var socket = dgram.createSocket('udp4');
-socket.bind(33333, 'S.S.S.S');
+socket.bind(33333, '10.250.55.157');
 
 var publicEndpointA = null;
 var publicEndpointB = null;
