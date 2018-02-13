@@ -3,9 +3,9 @@ var dgram = require('dgram');
 
 // based on http://www.bford.info/pub/net/p2pnat/index.html
 
-
+var conf = require('./conf')
 var socket = dgram.createSocket('udp4');
-socket.bind(33333, '10.250.55.157');
+socket.bind(conf.port, conf.host);
 
 var publicEndpointA = null;
 var publicEndpointB = null;

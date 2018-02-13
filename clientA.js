@@ -7,6 +7,8 @@ var dgram = require('dgram');
 
 var socket = dgram.createSocket('udp4');
 
+var conf = require('./conf')
+
 socket.on('message', function (message, remote) {
     console.log(remote.address + ':' + remote.port +' - ' + message);
     try{
@@ -16,13 +18,11 @@ socket.on('message', function (message, remote) {
 });
 
 function sendMessageToS () {
-	var serverPort = 33333;
-	var serverHost = '10.250.55.157';
 
 	var message = new Buffer('A');
-	socket.send(message, 0, message.length, serverPort, serverHost, function (err, nrOfBytesSent) {
+	socket.send(message, 0, message.length, conf.port, conf.host, function (err, nrOfBytesSent) {
 	    if (err) return console.log(err);
-	    console.log('UDP message sent to ' + serverHost +':'+ serverPort);
+	    console.log('UDP message sent to ' + conf.host +':'+ conf.port);
 	    // socket.close();
 	});
 }
